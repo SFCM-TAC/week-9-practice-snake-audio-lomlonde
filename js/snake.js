@@ -14,6 +14,8 @@ var xFruit = 0;
 var yFruit = 0;
 var scoreElem;
 
+var snakeColor = 'white';
+
 function setup() {
   scoreElem = createDiv('Score = 0');
   scoreElem.position(20, 20);
@@ -22,8 +24,6 @@ function setup() {
 
   createCanvas(500, 500);
   frameRate(15);
-  stroke(255);
-  strokeWeight(10);
   updateFruitCoordinates();
 
   for (var i = 0; i < numSegments; i++) {
@@ -34,6 +34,8 @@ function setup() {
 
 function draw() {
   background(0);
+  stroke(snakeColor);
+  strokeWeight(10);
   for (var i = 0; i < numSegments - 1; i++) {
     line(xCor[i], yCor[i], xCor[i + 1], yCor[i + 1]);
   }
@@ -117,12 +119,40 @@ function checkSnakeCollision() {
 */
 function checkForFruit() {
   point(xFruit, yFruit);
+  //stroke('red');
   if (xCor[xCor.length - 1] === xFruit && yCor[yCor.length - 1] === yFruit) {
     var prevScore = parseInt(scoreElem.html().substring(8));
     scoreElem.html('Score = ' + (prevScore + 1));
     xCor.unshift(xCor[0]);
     yCor.unshift(yCor[0]);
     numSegments++;
+
+    var randVal = Math.floor((Math.random() * 5) + 1);
+    console.log(randVal);
+
+      switch (randVal) {
+
+      case 1:
+        snakeColor = 'white';
+        break;
+
+      case 2:
+        snakeColor = 'red';
+        break;
+
+      case 3:
+        snakeColor = 'blue';
+        break;
+
+      case 4:
+        snakeColor = 'yellow';
+        break;
+
+      case 5:
+        snakeColor = 'purple';
+        break;
+
+      }
     updateFruitCoordinates();
   }
 }
