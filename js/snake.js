@@ -25,7 +25,7 @@ Music.loop = true;
 
 var SndFruit = new Tone.Player("sounds/fruit.ogg").toMaster();
 
-//var SndGameOver =
+var SndGameOver = new Tone.Player("sounds/death.wav").toMaster();
 
 
 function setup() {
@@ -105,6 +105,8 @@ function checkGameStatus() {
       yCor[yCor.length - 1] < 0 ||
       checkSnakeCollision()) {
     noLoop();
+    SndGameOver.start();
+    Music.stop();
     var scoreVal = parseInt(scoreElem.html().substring(8));
     scoreElem.html('Game ended! Your score was : ' + scoreVal);
   }
