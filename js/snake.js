@@ -23,7 +23,9 @@ var Music = new Tone.Player("sounds/stThemeLp.ogg").toMaster();
 Music.autostart = true;
 Music.loop = true;
 
-var Fruit = new Tone.Player("").toMaster();
+var SndFruit = new Tone.Player("sounds/fruit.ogg").toMaster();
+
+//var SndGameOver =
 
 
 function setup() {
@@ -181,6 +183,8 @@ function checkForFruit() {
 
 
       }
+
+    SndFruit.start();
     updateFruitCoordinates();
   }
 }
