@@ -16,6 +16,12 @@ var scoreElem;
 
 var snakeColor = 'white';
 
+var player = new Tone.Player("sounds/stThemeLp.ogg").toMaster();
+//starts music as soon as the buffer is loaded
+player.autostart = true;
+player.loop = true;
+
+
 function setup() {
   scoreElem = createDiv('Score = 0');
   scoreElem.position(20, 20);
@@ -126,6 +132,19 @@ function checkForFruit() {
     xCor.unshift(xCor[0]);
     yCor.unshift(yCor[0]);
     numSegments++;
+
+
+    // var j;
+    // function getNumber(){
+    //   var min = 0;
+    //   var max = 4;
+    //   var i = Math.floor(Math.random() * (max - min)) + min;
+    //   if (j === i) {
+    //     i = getNumber();
+    //   }
+    //   j = i;
+    //   return i;
+    // };
 
     var randVal = Math.floor((Math.random() * 5) + 1);
     console.log(randVal);
