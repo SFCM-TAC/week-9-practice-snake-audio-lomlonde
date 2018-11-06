@@ -16,10 +16,14 @@ var scoreElem;
 
 var snakeColor = 'white';
 
-var player = new Tone.Player("sounds/stThemeLp.ogg").toMaster();
+//audio player objects
+
+var Music = new Tone.Player("sounds/stThemeLp.ogg").toMaster();
 //starts music as soon as the buffer is loaded
-player.autostart = true;
-player.loop = true;
+Music.autostart = true;
+Music.loop = true;
+
+var Fruit = new Tone.Player("").toMaster();
 
 
 function setup() {
@@ -123,6 +127,9 @@ function checkSnakeCollision() {
  and just insert the tail segment again at the start of the array (basically
  I add the last segment again at the tail, thereby extending the tail)
 */
+
+//added switch that changes color of snake and fruit based on a random value
+
 function checkForFruit() {
   point(xFruit, yFruit);
   //stroke('red');
@@ -170,6 +177,8 @@ function checkForFruit() {
       case 5:
         snakeColor = 'purple';
         break;
+
+
 
       }
     updateFruitCoordinates();
